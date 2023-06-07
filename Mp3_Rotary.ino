@@ -19,6 +19,12 @@ MP3Player mp3(10, 11);
 
 void setup(void)
 {
+  // if analog input pin 0 is unconnected, random analog
+  // noise will cause the call to randomSeed() to generate
+  // different seed numbers each time the sketch runs.
+  // randomSeed() will then shuffle the random function
+  randomSeed(analogRead(0));
+
   initRotaryEncoder();
 
   Serial.begin(9600);
@@ -33,10 +39,14 @@ void loop(void)
 {
   if (readRotaryPushButton())
   {
+    currentTrack = random(1,trackCount+1);
+    Serial.print("Random...Playing Track #");
+    Serial.println(currentTrack);
+    mp3.playTrackNumber(currentTrack, volumeLevel, false);
   }
   if (readRotaryEncoder())
   {
-    Serial.print("Plating Track #");
+    Serial.print("Playing Track #");
     Serial.println(currentTrack);
     mp3.playTrackNumber(currentTrack, volumeLevel, false);
   }
