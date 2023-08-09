@@ -1,4 +1,4 @@
-# Navigating MP3 Files with Rotary Encoder
+# Navigating MP3 Files on DFP Player Mini with Rotary Encoder
 
 ### Youtube Tutorial
 https://youtu.be/2hBNCFyouJY
